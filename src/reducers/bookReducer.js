@@ -22,7 +22,7 @@ const get_updated_book = (book, payload) => {
 
     /* Create if not found */
     if (!found) {
-        book.push({
+        book.unshift({
             count,
             price,
             amount,
@@ -30,7 +30,11 @@ const get_updated_book = (book, payload) => {
         });
     }
 
-    return book;
+    book.sort((a, z) => {
+        return z.price - a.prize;
+    });
+    // return book;
+    return book.slice(0, 25);
 };
 const remove_from_book = (bid_book, payload) => {
     let [chanId, data] = payload;
@@ -39,7 +43,6 @@ const remove_from_book = (bid_book, payload) => {
 };
 
 const get_create_books = (payload) => {
-    console.log(payload);
     let [chanId, data] = payload;
     let ask_book = [],
         bid_book = [];

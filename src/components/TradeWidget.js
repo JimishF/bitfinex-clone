@@ -24,7 +24,6 @@ function TradeWidget() {
                     <tbody>
                         {trade.map((elm) => (
                             <tr key={elm.id} className={
-<<<<<<< HEAD
                                 daily_change - elm.price < 0 ? 'has-background-success-light' : 'has-background-danger-light' 
                             }>
                                 <td>
@@ -32,15 +31,6 @@ function TradeWidget() {
                                         <i className="fas has-text-success fa-angle-up"></i>
                                     ) : (
                                         <i className="fas has-text-danger fa-angle-down"></i>
-=======
-                                daily_change - elm.price < 0 ? 'has-background-danger-light' : 'has-background-success-light' 
-                            }>
-                                <td>
-                                    {daily_change - elm.price < 0 ? (
-                                        <i className="fas has-text-danger fa-angle-down"></i>
-                                    ) : (
-                                        <i className="fas has-text-success fa-angle-up"></i>
->>>>>>> 733f3db2b82ce8ef04dc85c1ffe1fa63f3be808b
                                     )}
                                 </td>
                                 <td>

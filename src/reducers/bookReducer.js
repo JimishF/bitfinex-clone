@@ -9,6 +9,14 @@ const attach_amount_percentage= ( data ) => {
     })
 }
 
+const attach_commutative_percentage= ( data ) => {
+    let csum = 0;
+    return data.map(d=>{
+        d.c_percentage =  (  Math.abs(d.amount) *100 / total_amount).toFixed(0) 
+        return d
+    })
+}
+
 const get_updated_book = (book, payload, sort_type) => {
     let [chanId, data] = payload;
     let [price, count, amount] = data;

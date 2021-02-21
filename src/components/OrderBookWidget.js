@@ -7,25 +7,23 @@ function OrderBookWidget() {
     const min = 0;
     const key = "total";
     return (
-        <section className="section">
             <div className="box">
-                <table className="table  is-narrow is-fullwidth">
-                    <thead>
-                        <tr className="has-background-info-light">
-                            <th>Count</th>
-                            <th>Amount</th>
-                            <th>Total</th>
-                            <th>Price</th>
+                <p className="has-text-centered mb-3"><strong>Order Book</strong></p>
+                <div className="">
+                  
+                        <div className="is-flex my-4" >
+                            <strong className="col">Count</strong>
+                            <strong className="col">Amount</strong>
+                            <strong className="col">Total</strong>
+                            <strong className="col">Price</strong>
                             {/* Second half */}
-                            <th>Price</th>
-                            <th>Total</th>
-                            <th>Amount</th>
-                            <th>Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                            <strong className="col">Price</strong>
+                            <strong className="col">Total</strong>
+                            <strong className="col">Amount</strong>
+                            <strong className="col">Count</strong>
+                        </div>
                         {ar.map((elm, index) => (
-                            <tr key={index}>
+                            <div className="columns" key={index}>
                                 <OrderBookRow
                                     book_type="bid_book"
                                     index={index}
@@ -34,12 +32,10 @@ function OrderBookWidget() {
                                     book_type="ask_book"
                                     index={index}
                                 />
-                            </tr>
+                            </div>
                         ))}
-                    </tbody>
-                </table>
+                </div>
             </div>
-        </section>
     );
 }
 

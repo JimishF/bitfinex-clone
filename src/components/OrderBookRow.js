@@ -17,23 +17,23 @@ function OrderBookRow({ index, book_type = "ask_book" }) {
 
     if( !count ) return <></>
     return (
-        <>
+        <div className="column is-flex p-0 bgload">
             {book_type === "bid_book" ? (
                 <>
-                    <td>{count}</td>
-                    <td>{amount}</td>
-                    <td>{total}</td>
-                    <td>{price}</td>
-                </>
+                    <div className="col">{count}</div>
+                    <div className="col">{amount}</div>
+                    <div className="col">{total}</div>
+                    <div className="col">{price}</div>
+                </> 
             ) : (
                 <>
-                    <td>{price}</td>
-                    <td>{Math.abs(total)}</td>
-                    <td>{Math.abs(amount)}</td>
-                    <td>{count}</td>
+                    <div className="col">{price}</div>
+                    <div className="col">{Math.abs(total)}</div>
+                    <div className="col">{Math.abs(amount)}</div>
+                    <div className="col">{count}</div>
                 </>
             )}
-        </>
+        </div>
     );
 }
 

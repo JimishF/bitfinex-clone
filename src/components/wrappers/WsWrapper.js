@@ -8,6 +8,7 @@ import React, {
 import { useDispatch } from "react-redux";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import DataInterpreter from "./DataInterpreter";
+import * as bulmaToast from 'bulma-toast'
 
 const SYMBOL = "tBTCUSD";
 const SUBSCRIPTION_PAYLOADS = [
@@ -34,7 +35,15 @@ const SUBSCRIPTION_PAYLOADS = [
 export const WsWrapper = ({ children }) => {
     //Public API that will echo messages sent to it back to the client
     const [socketUrl] = useState("wss://api-pub.bitfinex.com/ws/2");
-    const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
+    const { sendMessage, lastMessage, readyState, } = useWebSocket(socketUrl,{
+        onOpen: () => {
+            bulmaToast.toast({ message: 'WebSocket Connected', type: 'is-success' })
+        },
+        shouldReconnect: (closeEvent) => {
+            bulmaToast.toast({ message: 'Reconnecting', type: 'is-warning' })
+            return true
+        },
+    });
 
     const connectChannels = useCallback(() => {
         SUBSCRIPTION_PAYLOADS.map((config) => {

@@ -9,21 +9,27 @@ const get_updated_trade = (trade, payload) => {
         amount,
         price,
     });
+    trade.sort((a, z) => {
+        return z.time - a.time;
+    });
     return trade.slice(0, MAX_TRADES);
 };
 
 const get_create_trade = (payload) => {
     let trade = [];
-    let [chanId, flag, data] = payload;
+    let [chanId, data] = payload;
     for (let element of data) {
         let [id, timestamp, amount, price] = element;
-        trade.unshift({
+        trade.push({
             id,
             timestamp,
             amount,
             price,
         });
     }
+    trade.sort((a, z) => {
+        return z.time - a.time;
+    });
     return trade;
 };
 

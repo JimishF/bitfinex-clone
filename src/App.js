@@ -8,12 +8,24 @@ import TradeWidget from "./components/TradeWidget";
 
 function App() {
     return (
-        <div className="container">
+        <div className="">
             <Provider store={store}>
                 <WsWrapper>
-                    <OrderBookWidget />
-                    <Ticker/>
-                    <TradeWidget />
+                    <div className="columns">
+                        <div className="column is-8">
+                            <OrderBookWidget />
+                        </div>
+                        <div className="column is-4">
+                            <div className=" columns is-multiline">
+                                <div className="column is-full">
+                                    <Ticker />
+                                </div>
+                                <div className="column is-full">
+                                    <TradeWidget />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </WsWrapper>
             </Provider>
         </div>

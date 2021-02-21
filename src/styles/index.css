@@ -4,3 +4,18 @@
         linear-gradient(white 40px, transparent 0),
         linear-gradient(gray 100%, transparent 0);
 }
+
+:root {
+    --green: #c8e6c9;
+    --red: #ffcdd2;
+}
+.progress {
+    background: linear-gradient(to right, var(--green) 50%, white 50%);
+    border: none;
+}
+
+.col {
+    overflow: hidden;
+    width: 25%;
+    text-overflow: ellipsis;
+}

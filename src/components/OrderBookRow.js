@@ -28,8 +28,8 @@ function OrderBookRow({ index, book_type = "ask_book" }) {
             ) : (
                 <>
                     <td>{price}</td>
-                    <td>{total}</td>
-                    <td>{amount}</td>
+                    <td>{Math.abs(total)}</td>
+                    <td>{Math.abs(amount)}</td>
                     <td>{count}</td>
                 </>
             )}

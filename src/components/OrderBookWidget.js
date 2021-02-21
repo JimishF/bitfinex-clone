@@ -9,7 +9,7 @@ function OrderBookWidget() {
     return (
         <section className="section">
             <div className="box">
-                <table className="table is-fullwidth">
+                <table className="table  is-narrow is-fullwidth">
                     <thead>
                         <tr className="has-background-info-light">
                             <th>Count</th>

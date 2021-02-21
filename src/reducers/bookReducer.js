@@ -32,11 +32,11 @@ const get_updated_book = (book, payload, sort_type) => {
 
     if (sort_type === "asc") {
         book.sort((a, z) => {
-            return z.price - a.prize;
+            return a.price - z.price;
         });
     } else {
         book.sort((a, z) => {
-            return z.price - a.prize;
+            return z.price - a.price;
         });
     }
 
@@ -97,7 +97,7 @@ export default (state = { bid_book: [], ask_book: [] }, action) => {
             let bid_book = get_updated_book(
                 state.bid_book,
                 action.payload,
-                "asc"
+                "desc"
             );
             return {
                 ...state,
@@ -109,7 +109,7 @@ export default (state = { bid_book: [], ask_book: [] }, action) => {
             let ask_book = get_updated_book(
                 state.ask_book,
                 action.payload,
-                "desc"
+                "asc"
             );
             return {
                 ...state,

@@ -4,6 +4,7 @@ import store from "./store";
 import OrderBookWidget from "./components/OrderBookWidget";
 import Ticker from "./components/Ticker";
 import "./styles/index.css";
+import TradeWidget from "./components/TradeWidget";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <WsWrapper>
                     <OrderBookWidget />
                     <Ticker/>
+                    <TradeWidget />
                 </WsWrapper>
             </Provider>
         </div>

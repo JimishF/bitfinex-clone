@@ -18,12 +18,12 @@ const SUBSCRIPTION_PAYLOADS = [
         frequency: "F1",
         prec: "p1",
     },
-    // {
-    //     event: "subscribe",
-    //     channel: "trades",
-    //     symbol: SYMBOL,
-    //     frequency: "F1",
-    // },
+    {
+        event: "subscribe",
+        channel: "trades",
+        symbol: SYMBOL,
+        frequency: "F1",
+    },
     {
         event: "subscribe",
         channel: "ticker",
@@ -61,12 +61,6 @@ export const WsWrapper = ({ children }) => {
     return (
         <>
             <DataInterpreter lastMessage={lastMessage}>
-                <div className="columns">
-                    <div className="column">
-                        <button className="button is-success">Enable Realtime</button>
-                        <button className="button is-danger">Disable Realtime</button>
-                    </div>
-                </div>
                 {children}
             </DataInterpreter>
         </>

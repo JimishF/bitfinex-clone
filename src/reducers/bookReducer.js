@@ -1,11 +1,10 @@
-const attach_price_percentage= ( data ) => {
-    let price_data = data.map(e=>e.price)
-    let max = Math.max(...price_data ) 
-    max = max <= 0 ? max = 1 : max;
+const attach_amount_percentage= ( data ) => {
+    
+    let total_amount = data.reduce((a,e)=>a + Math.abs(e.amount), 0)
     
     return data.map(d=>{
-        d.percentage =  (d.price / max).toFixed(0) 
-        d.max =  max 
+        d.percentage =  (  Math.abs(d.amount) *100 / total_amount).toFixed(0) 
+        d.total_amount = total_amount;
         return d
     })
 }
@@ -53,7 +52,7 @@ const get_updated_book = (book, payload, sort_type) => {
     }
 
     book =  book.slice(0, 25);
-    book = attach_price_percentage(book);
+    book = attach_amount_percentage(book);
     return book;
 };
 const remove_from_book = (bid_book, payload) => {

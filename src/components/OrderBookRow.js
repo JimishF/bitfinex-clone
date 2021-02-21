@@ -26,10 +26,11 @@ function OrderBookRow({ index, book_type = "ask_book" }) {
             : `linear-gradient(to right, var(--red) 0% ${percentage}%, white ${percentage}% ${
                   100 - percentage
               }%)`;
-    if (!count) return <></>;
+    if (!count)
+        return <div className="column is-half is-flex p-0"></div>;
     return (
         <div
-            className="column is-flex p-0 bgload"
+            className="column is-half is-flex p-0 bgload"
             style={{
                 background: bg,
             }}

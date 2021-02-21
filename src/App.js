@@ -1,9 +1,12 @@
 import WsWrapper from "./components/wrappers/WsWrapper";
-
+import { Provider } from "react-redux";
+import store from "./store";
 function App() {
     return (
         <div>
-            <WsWrapper></WsWrapper>
+            <Provider store={store}>
+                <WsWrapper></WsWrapper>
+            </Provider>
         </div>
     );
 }

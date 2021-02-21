@@ -1,16 +1,40 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function OrderBookRow({ index }) {
-    const state = useSelector((state) => state?.bookReducer?.ask_book[index]);
+function OrderBookRow({ index, book_type = "ask_book" }) {
+    const count = useSelector(
+        (state) => state.bookReducer[book_type][index]?.count
+    );
+    const amount = useSelector(
+        (state) => state.bookReducer[book_type][index]?.amount
+    );
+    const total = useSelector(
+        (state) => state.bookReducer[book_type][index]?.total
+    );
+    const price = useSelector(
+        (state) => state.bookReducer[book_type][index]?.price
+    );
+
+    if( !count ) return <></>
     return (
-        <div className="columns">
-            <div className="column">{state?.count}</div>
-            <div className="column">{state?.amount}</div>
-            <div className="column">{state?.total}</div>
-            <div className="column">{state?.price}</div>
-        </div>
-    );;
+        <>
+            {book_type === "bid_book" ? (
+                <>
+                    <td>{count}</td>
+                    <td>{amount}</td>
+                    <td>{total}</td>
+                    <td>{price}</td>
+                </>
+            ) : (
+                <>
+                    <td>{price}</td>
+                    <td>{total}</td>
+                    <td>{amount}</td>
+                    <td>{count}</td>
+                </>
+            )}
+        </>
+    );
 }
 
 export default OrderBookRow;

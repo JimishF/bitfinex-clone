@@ -41,6 +41,11 @@ function DataInterpreter({ lastMessage, children }) {
             });
         } else if (channelState.current[chanId].channel === "trade") {
 
+        }else if(channelState.current[chanId].channel === "ticker" ){
+            dispatch({
+                type:"UPDATE_TICKER",
+                payload:message
+            })
         }
     };
 
@@ -58,6 +63,11 @@ function DataInterpreter({ lastMessage, children }) {
                 payload: message,
             });
         } else if (channelState.current[chanId].channel === "trade") {
+        }else if(channelState.current[chanId].channel === "ticker" ){
+            dispatch({
+                type:"UPDATE_TICKER",
+                payload:message
+            })
         }
 
     };

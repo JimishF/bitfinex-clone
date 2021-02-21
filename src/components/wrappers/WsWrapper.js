@@ -16,6 +16,7 @@ const SUBSCRIPTION_PAYLOADS = [
         channel: "book",
         symbol: SYMBOL,
         frequency: "F1",
+        prec: "p1",
     },
     // {
     //     event: "subscribe",
@@ -23,11 +24,12 @@ const SUBSCRIPTION_PAYLOADS = [
     //     symbol: SYMBOL,
     //     frequency: "F1",
     // },
-    // {
-    //     event: "subscribe",
-    //     channel: "ticker",
-    //     symbol: SYMBOL,
-    // },
+    {
+        event: "subscribe",
+        channel: "ticker",
+        symbol: SYMBOL,
+        prec: "p1",
+    },
 ];
 export const WsWrapper = ({ children }) => {
     //Public API that will echo messages sent to it back to the client
@@ -59,6 +61,12 @@ export const WsWrapper = ({ children }) => {
     return (
         <>
             <DataInterpreter lastMessage={lastMessage}>
+                <div className="columns">
+                    <div className="column">
+                        <button className="button is-success">Enable Realtime</button>
+                        <button className="button is-danger">Disable Realtime</button>
+                    </div>
+                </div>
                 {children}
             </DataInterpreter>
         </>

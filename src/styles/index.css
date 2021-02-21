@@ -9,7 +9,7 @@
     --green: #c8e6c9;
     --red: #ffcdd2;
 }
-.progress {
+.bgload {
     background: linear-gradient(to right, var(--green) 50%, white 50%);
     border: none;
 }

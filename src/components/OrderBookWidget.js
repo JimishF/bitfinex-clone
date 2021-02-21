@@ -4,7 +4,7 @@ import OrderBookRow from "./OrderBookRow";
 const ar = [...new Array(25)];
 
 function OrderBookWidget() {
-    const min = 0;
+ 
     const key = "total";
     return (
             <div className="box">

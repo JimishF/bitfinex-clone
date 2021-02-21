@@ -1,3 +1,15 @@
+const attach_price_percentage= ( data ) => {
+    let price_data = data.map(e=>e.price)
+    let max = Math.max(...price_data ) 
+    max = max <= 0 ? max = 1 : max;
+    
+    return data.map(d=>{
+        d.percentage =  (d.price / max).toFixed(0) 
+        d.max =  max 
+        return d
+    })
+}
+
 const get_updated_book = (book, payload, sort_type) => {
     let [chanId, data] = payload;
     let [price, count, amount] = data;
@@ -40,7 +52,9 @@ const get_updated_book = (book, payload, sort_type) => {
         });
     }
 
-    return book.slice(0, 25);
+    book =  book.slice(0, 25);
+    book = attach_price_percentage(book);
+    return book;
 };
 const remove_from_book = (bid_book, payload) => {
     let [chanId, data] = payload;
@@ -52,6 +66,7 @@ const get_create_books = (payload) => {
     let [chanId, data] = payload;
     let ask_book = [],
         bid_book = [];
+
     // debugger;
     data.forEach((element) => {
         let [price, count, amount] = element;

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 
-function OrderBookRow({ index, book_type = "ask_book" }) {
+function OrderBookRow({ index, book_type = "ask_book", chartType = "commutative" }) {
+  
     const count = useSelector(
         (state) => state.bookReducer[book_type][index]?.count
     );
@@ -14,8 +15,12 @@ function OrderBookRow({ index, book_type = "ask_book" }) {
     const price = useSelector(
         (state) => state.bookReducer[book_type][index]?.price
     );
+
+
+    let per = useMemo(()=>
+    chartType === "commutative" ? 'c_percentage' : 'percentage', [chartType]);
     const percentage = useSelector(
-        (state) => state.bookReducer[book_type][index]?.percentage
+        (state) => state.bookReducer[book_type][index]?.[per]
     );
 
     const bg =

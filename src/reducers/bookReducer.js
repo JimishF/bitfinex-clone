@@ -12,7 +12,9 @@ const attach_amount_percentage= ( data ) => {
 const attach_commutative_percentage= ( data ) => {
     let csum = 0;
     return data.map(d=>{
-        d.c_percentage =  (  Math.abs(d.amount) *100 / total_amount).toFixed(0) 
+        
+        csum += Math.abs(d.amount);
+        d.c_percentage =  (  csum *100 / d.total_amount).toFixed(0) 
         return d
     })
 }
@@ -61,6 +63,8 @@ const get_updated_book = (book, payload, sort_type) => {
 
     book =  book.slice(0, 25);
     book = attach_amount_percentage(book);
+    book = attach_commutative_percentage(book);
+    
     return book;
 };
 const remove_from_book = (bid_book, payload) => {
@@ -102,6 +106,12 @@ const get_create_books = (payload) => {
         }
     });
 
+    ask_book = attach_amount_percentage(ask_book);
+    ask_book = attach_commutative_percentage(ask_book);
+    
+    bid_book = attach_amount_percentage(bid_book);
+    bid_book = attach_commutative_percentage(bid_book);
+    
     return { ask_book, bid_book };
 };
 
